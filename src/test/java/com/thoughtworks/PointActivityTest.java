@@ -25,6 +25,6 @@ public class PointActivityTest {
 
         int points =  pointActivity.exchangePoint(refrigerator);
 
-        assertEquals(700,points);
+        assertEquals(1400,points);
     }
 }
