@@ -6,20 +6,36 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class CalculatorTest {
     @Test
-    public void should_return_total_points_when_calculate_points_given_goods(){
+    public void should_return_total_points_when_calculate_points_given_benefit_goods_money_under_1000(){
         Calculator calculator = new Calculator();
         ArrayList<Good> goods = new ArrayList<>();
-        goods.add(new Good(GoodsName.APPLE, BigDecimal.valueOf(100)));
-        goods.add(new Good(GoodsName.REFRIGERATOR, BigDecimal.valueOf(700)));
-        goods.add(new Good(GoodsName.BEEF, BigDecimal.valueOf(150)));
+        goods.add(new Good(GoodsName.TELEVISION, BigDecimal.valueOf(800)));
+        goods.add(new Good(GoodsName.WASHING_MACHINE, BigDecimal.valueOf(2000)));
+
+        BeyondPointRules rules = new BeyondPointRules();
 
 
-        int totalPoints = calculator.calculatorPoints(goods);
+        int totalPoints = calculator.calculatorPoints(goods,rules);
 
-        assertEquals(1050,totalPoints);
+        assertEquals(1890,totalPoints);
+    }
+
+    @Test
+    public void should_return_total_points_when_calculate_points_given_benefit_goods_money_beyond_1000(){
+        Calculator calculator = new Calculator();
+        ArrayList<Good> goods = new ArrayList<>();
+        goods.add(new Good(GoodsName.TELEVISION, BigDecimal.valueOf(800)));
+        goods.add(new Good(GoodsName.TELEVISION, BigDecimal.valueOf(800)));
+        goods.add(new Good(GoodsName.WASHING_MACHINE, BigDecimal.valueOf(2000)));
+
+        BeyondPointRules rules = new BeyondPointRules();
+
+
+        int totalPoints = calculator.calculatorPoints(goods,rules);
+
+        assertEquals(2100,totalPoints);
     }
 }
