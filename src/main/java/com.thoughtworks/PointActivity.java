@@ -1,7 +1,6 @@
 package com.thoughtworks;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class PointActivity {
     private List<GoodsName> basicTaxFreeGoodsTypes = Arrays.asList(GoodsName.APPLE, GoodsName.WATERMELON, GoodsName.REFRIGERATOR);
 
     public int exchangePoint(Good good){
-        BigDecimal pointExchangeRatio = BigDecimal.valueOf(0);
+        BigDecimal pointExchangeRatio;
         if(isPromotional(good)){
             pointExchangeRatio = BENEFIT_POINT_EXCHANGE_RATIO;
         }else {
